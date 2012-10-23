@@ -12,8 +12,6 @@ app.listen(port, function () {
 	console.log("Listening on " + port);
 });
 
-// var url = 'mongodb://admin:olimpo30@ds037407.mongolab.com:37407/pizarron';
-
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
 app.use(express.bodyParser());
