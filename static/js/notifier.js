@@ -1,4 +1,4 @@
-var socket = io.connect('http://192.168.1.10:4000');
+var socket = io.connect('http://127.0.0.1:3000');
 
 socket.on('new-post', function (post){
 	addPost(post);

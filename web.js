@@ -1,16 +1,13 @@
 var express = require('express');
 var app = express();
-// var server = require('http').createServer(app);
-
-var io = require('socket.io').listen(4000, {log: false});
 
 var mongo = require('./mongo.js');
 
 var port = process.env.PORT || 3000;
 
-app.listen(port, function () {
-	console.log("Listening on " + port);
-});
+var server = app.listen(3000);
+
+var io = require('socket.io').listen(server, {log: false});
 
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
