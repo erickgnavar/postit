@@ -1,0 +1,19 @@
+doctype 5
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		title='Pizarron de noticias'
+		link(rel='shortcut icon', href='static/img/postit.png')
+		link(rel='stylesheet', type='text/css' , href='static/css/normalize.css')
+		link(rel='stylesheet', type='text/css' , href='static/css/base.css')
+		link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Reenie+Beanie')
+		block extrastyle
+	body
+		header
+			h1 Pizarron de noticias
+		section
+			block content
+		//- Scripts
+		script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
+		script(type='text/javascript', src='http://192.168.1.10/socket.io.js')
+		script(type='text/javascript', src='http://192.168.1.10:3000/static/js/notifier.js')

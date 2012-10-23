@@ -1,0 +1,12 @@
+extends base
+block content
+	ul#posts
+		if posts
+			for post in posts
+				li.postit
+					h2.title #{ post.title }
+					p.content #{ post.content }
+					i.author #{ post.author }
+					//- i.date #{ post.date }
+		else
+			p No hay datos
