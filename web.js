@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 
-var mongo = require('./mongo.js');
+var mongo = require('./mongo');
 
 var port = process.env.PORT || 3000;
 
