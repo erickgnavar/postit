@@ -6,8 +6,8 @@ var mongo_options = {
 	poolSize: 5
 };
 
-var server = new mongo.Server('localhost', 27017, mongo_options);
-var db = new mongo.Db('notifier', server);
+var server = new mongo.Server('mongodb://erickxls:olimpo30@ds041387.mongolab.com/postit', 41387, {});
+var db = new mongo.Db('postit', server);
 
 var savePost = function (post, callback){
 	db.open(function (error, db){
