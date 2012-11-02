@@ -5,9 +5,13 @@ var mongo = require('./mongo');
 
 var port = process.env.PORT || 3000;
 
-var server = app.listen(3000);
+var server = app.listen(port);
 
 var io = require('socket.io').listen(server, {log: false});
+io.configure(function () {
+	io.set('transports', ['xhr-polling']);
+	io.set('polling duration', 10);
+});
 
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
