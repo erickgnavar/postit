@@ -5,8 +5,8 @@ socket.on('new-post', function (post){
 });
 
 $(document).on('ready', function(){
-	$('#form-new-post').on('submit', function (e) {
-		e.preventDefault();
+	$('#form-post').on('submit', function (e) {
+		// e.preventDefault();
 		var title = $(this).find('#title').val();
 		var content = $(this).find('#content').val();
 		var post = {
@@ -15,7 +15,7 @@ $(document).on('ready', function(){
 			author: 'Benito'
 		};
 		socket.emit('save-post', JSON.stringify(post));
-		return false;
+		return true;
 	});
 });
 

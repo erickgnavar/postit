@@ -78,21 +78,24 @@ app.get('/admin/', function (request, response) {
 	response.render('admin');
 });
 
-app.post('/post/', function (request, response) {
-	var post = {
-		'title' : request.body.title,
-		'author' : 'Erick Navarro',
-		'content' : request.body.content
-	};
-	mongo.savePost(post, function (success) {
-		if(success){
-			response.redirect('/');
-		}else{
-			response.send('BAD');
+app.post('/post', function (request, response) {
+
+	var Post = mongoose.model('Post');
+	var post = new Post({
+		title: request.body.title,
+		author: 'Erick Navarro',
+		content: request.body.content
+	});
+	post.save(function (err, post) {
+		if (err) {
+			console.log(err);
+		}else {
+			console.log(post);
 		}
 	});
+
 });
 
 app.get('/post', function (request, response){
-	response.render('new_post');
+	response.render('post_create');
 });
