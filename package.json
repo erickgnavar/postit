@@ -4,8 +4,10 @@
 	"dependencies": {
 		"express": "latest",
 		"jade": "latest",
-		"mongodb": "latest",
-		"socket.io": "latest"
+		"socket.io": "latest",
+		"mongoose": "latest",
+		"passport": "latest",
+		"passport-twitter": "latest"
 	},
 	"engines": {
 		"node": "0.8.x",
