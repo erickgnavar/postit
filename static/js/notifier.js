@@ -1,4 +1,4 @@
-var socket = io.connect('http://postit.herokuapp.com');
+var socket = io.connect('/');
 
 socket.on('new post', function (post){
 	addPost(post);
