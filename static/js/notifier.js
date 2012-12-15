@@ -1,12 +1,12 @@
 var socket = io.connect('http://postit.herokuapp.com');
 
-socket.on('new-post', function (post){
+socket.on('new post', function (post){
 	addPost(post);
 });
 
 $(document).on('ready', function(){
 	$('#form-post').on('submit', function (e) {
-		// e.preventDefault();
+		e.preventDefault();
 		var title = $(this).find('#title').val();
 		var content = $(this).find('#content').val();
 		var post = {
@@ -14,8 +14,8 @@ $(document).on('ready', function(){
 			content: content,
 			author: 'Benito'
 		};
-		socket.emit('save-post', JSON.stringify(post));
-		return true;
+		socket.emit('save post', JSON.stringify(post));
+		return false;
 	});
 });
 

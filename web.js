@@ -25,12 +25,11 @@ app.use(express.compress());
 app.use('/static', express.static(__dirname + '/static'));
 
 io.sockets.on('connection', function (socket){
-	socket.on('save-post', function (data){
-		var post = JSON.parse(data);
-		mongo.savePost(post, function (success) {
-			if(success) {
-				io.sockets.emit('new-post', post);
-			}
+	socket.on('save post', function (data){
+		var Post = mongoose.model('Post');
+		var post = new Post(JSON.parse(data));
+		post.save(function (err, post) {
+			io.sockets.emit('new post', post);
 		});
 	});
 });
@@ -76,24 +75,6 @@ app.get('/logout', function (request, response) {
 
 app.get('/admin/', function (request, response) {
 	response.render('admin');
-});
-
-app.post('/post', function (request, response) {
-
-	var Post = mongoose.model('Post');
-	var post = new Post({
-		title: request.body.title,
-		author: 'Erick Navarro',
-		content: request.body.content
-	});
-	post.save(function (err, post) {
-		if (err) {
-			console.log(err);
-		}else {
-			console.log(post);
-		}
-	});
-
 });
 
 app.get('/post', function (request, response){
