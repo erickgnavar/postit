@@ -7,6 +7,10 @@ var port = process.env.PORT || 3000;
 
 var server = app.listen(port);
 
+var mongoose = require('mongoose');
+require('./models');
+
+
 var io = require('socket.io').listen(server, {log: false});
 io.configure(function () {
 	io.set('transports', ['xhr-polling']);
@@ -33,13 +37,17 @@ io.sockets.on('connection', function (socket){
 
 
 app.get('/', function (request, response) {
-	mongo.getPosts(function (posts){
-		if(posts){
-			response.render('home', {posts: posts});
-		}
-		else
-			response.send('hola');
+
+	var Post = mongoose.model('Post');
+
+	Post.find(function (err, posts) {
+		response.render(
+			'home', {
+				posts: posts
+			}
+		);
 	});
+
 });
 
 app.post('/login/', function (request, response){
@@ -64,6 +72,10 @@ app.get('/login', function (request, response) {
 
 app.get('/logout', function (request, response) {
 	response.redirect('/');
+});
+
+app.get('/admin/', function (request, response) {
+	response.render('admin');
 });
 
 app.post('/post/', function (request, response) {
