@@ -1,9 +1,0 @@
-extends base
-block content
-	div
-		form#form-post(method='post', action='/post')
-			label(for='title') Titulo
-			input#title(type='text', name='title')
-			label(for='content') Contenido
-			textarea#content(name='content')
-			input#save-post-btn.btn(type='submit', value='Post')

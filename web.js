@@ -48,35 +48,3 @@ app.get('/', function (request, response) {
 	});
 
 });
-
-app.post('/login/', function (request, response){
-	var username = request.body.username;
-	var password = request.body.password;
-	var user = {
-		'username': username,
-		'password': password
-	};
-	mongo.login(user, function (success){
-		if(success){
-			response.send('login successfull');
-		}else{
-			response.send('problem with username or password');
-		}
-	});
-});
-
-app.get('/login', function (request, response) {
-	response.render('login');
-});
-
-app.get('/logout', function (request, response) {
-	response.redirect('/');
-});
-
-app.get('/admin/', function (request, response) {
-	response.render('admin');
-});
-
-app.get('/post', function (request, response){
-	response.render('post_create');
-});

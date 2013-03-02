@@ -9,10 +9,11 @@ $(document).on('ready', function(){
 		e.preventDefault();
 		var title = $(this).find('#title').val();
 		var content = $(this).find('#content').val();
+		var author = $(this).find('#author').val();
 		var post = {
 			title: title,
 			content: content,
-			author: 'Benito'
+			author: author
 		};
 		socket.emit('save post', JSON.stringify(post));
 		return false;

@@ -1,9 +1,0 @@
-extends base
-block content
-	div
-		form.form(method='post', action='/login/')
-			label(for='user') Usuario
-			input#user(type='text', name='username', placeholder='ingrese su usuario', autofocus, required)
-			label(for='password') Contraseña
-			input#password(type='password', name='password', placeholder='ingrese su contraseña', required)
-			input#login-btn.btn(type='submit', value='Log In')
