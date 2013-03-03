@@ -1,20 +1,35 @@
 extends base
+block header
+	h1 Postit App
+	span.pull-right
+		button.btn.btn-success(data-toggle='modal', data-target='#new-post')
+			i.icon-plus
 block content
 	ul#posts
 		if posts
 			for post in posts
 				li.postit
+					span.pull-right
+						a(href='#', data-pk='#{ post._id }')
+							i.icon-trash
 					h2.title #{ post.title }
 					p.content #{ post.content }
 					i.author #{ post.author }
 					br
-					i.date #{ post.created.toDateString() }
+					//- i.date #{ post.created.toDateString() }
 		else
 			p No data found
-	div
-		form#form-post(method='post', action='/post')
-			label(for='title') Titulo
+	div#new-post.modal.hide.fade
+		div.modal-header
+			button.close(data-dismiss='modal' ,aria-hidden='true') &times;
+			h3 New Postit
+		div.modal-body
+			label(for='author') Author
+			input#author(type='text', name='author')
+			label(for='title') Title
 			input#title(type='text', name='title')
-			label(for='content') Contenido
+			label(for='content') Content
 			textarea#content(name='content')
-			input#save-post-btn.btn(type='submit', value='Post')
+		div.modal-footer
+			input#save-post-btn.btn.btn-primary(type='submit', value='Post')
+			button#cancel-post-btn.btn(data-dismiss='modal') Cancel

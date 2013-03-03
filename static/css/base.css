@@ -37,6 +37,7 @@ section{
 	background: rgb(255,255,136);
 	box-shadow: 0.2em 0.2em 0.2em rgba(0,0,0,0.4);
 	margin: 0.7em;
+	max-width: 200px;
 	padding: 1em;
 	border-bottom-right-radius: 60px 5px;
 	-webkit-transform: rotate(-2deg);
@@ -44,7 +45,7 @@ section{
 	transform: rotate(-2deg);
 }
 .postit:hover{
-	-webkit-animation: zoom-postit linear 1.5s;
+	-webkit-animation: zoom-postit linear 1s;
 }
 .active p{
 	max-width: 250px;

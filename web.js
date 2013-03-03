@@ -24,12 +24,20 @@ app.use(express.compress());
 
 app.use('/static', express.static(__dirname + '/static'));
 
-io.sockets.on('connection', function (socket){
-	socket.on('save post', function (data){
+io.sockets.on('connection', function (socket) {
+	socket.on('save post', function (data) {
 		var Post = mongoose.model('Post');
 		var post = new Post(JSON.parse(data));
 		post.save(function (err, post) {
 			io.sockets.emit('new post', post);
+		});
+	});
+	socket.on('delete post', function (data) {
+		var Post = mongoose.model('Post');
+		var pk = data.pk;
+		Post.remove({_id: data.pk}, function (err) {
+			if(!err)
+				io.sockets.emit('drop post', pk);
 		});
 	});
 });
